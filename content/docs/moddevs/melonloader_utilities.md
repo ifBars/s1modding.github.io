@@ -1,0 +1,87 @@
+---
+weight: 22500
+title: "MelonLoader Utilities"
+description: "Useful tools provided by MelonLoader"
+icon: "hardware"
+date: "2025-06-26T23:23:27+02:00"
+lastmod: "2025-06-26T23:23:27+02:00"
+draft: false
+toc: true
+---
+
+This is not an exhaustive list of all the tools provided by MelonLoader, but it should cover the most commonly used ones.
+For more information, refer to the [MelonLoader documentation](https://melonwiki.xyz/#/modders/quickstart).
+
+- **MelonLogger**:
+You can use `LoggerInstance` in non-static context of your mod class to log messages to the console. This is useful for debugging and providing feedback to the player.
+If you want to log messages in static context, MelonLoader provides a singleton instance of your mod class that you can use to access the logger:
+```csharp
+Melon<MyMod>.LoggerInstance.Msg("This is a message from static context");
+```
+You also can use `.Error` or `.Warning` to log error or warning messages, respectively.
+- Callbacks:
+MelonLoader provides various callbacks that you can override in your mod class to execute code at specific points in the game lifecycle. For example, you can override `OnUpdate` to execute code every frame, or `OnSceneWasLoaded` to execute code when a new scene is loaded.
+```csharp
+public override void OnUpdate()
+{
+    // This code will be executed every frame
+    Melon<MyMod>.LoggerInstance.Msg("Updating..."); // Don't do this - it will spam the console and lag a lot!
+}
+public override void OnSceneWasLoaded(int buildIndex, string sceneName)
+{
+    // This code will be executed when a new scene is loaded
+    LoggerInstance.Msg($"Scene {sceneName} was loaded!");
+    if (sceneName == "Main")
+    {
+        LoggerInstance.Msg("We're loading the game!");
+    }
+}
+```
+You can also subscribe to events, using `MelonEvents`:
+```csharp
+MelonEvents.OnUpdate.Subscribe(() =>
+{
+    // This code will be executed every frame
+    LoggerInstance.Msg("Updating...");
+}, 100); // The higher the number, the lower the priority.
+```
+- **MelonPreferences**:
+MelonLoader provides a way to create preferences for your mod, which can be accessed and modified by the player in `UserData/MelonPreferences.cfg` or a custom file.
+
+You can create preferences using the `MelonPreferences.CreateCategory` method, and then create preferences using `MelonPreferences.CreateEntry` method. Here's an example:
+```csharp
+private MelonPreferences_Category category;
+private MelonPreferences_Entry<bool> entry1;
+
+public override void OnInitializeMelon()
+{
+    category = MelonPreferences.CreateCategory("MyMod", "My Mod Preferences");
+    entry1 = category.CreateEntry("EnableFeature", true, "Enable Feature", "This is a feature that can be enabled or disabled.");
+}
+
+public override void OnSceneWasLoaded(int buildIndex, string sceneName)
+{
+    if (entry1.Value)
+    {
+        LoggerInstance.Msg("Feature is enabled!");
+    }
+    else
+    {
+        LoggerInstance.Msg("Feature is disabled!");
+    }
+}
+```
+MelonLoader automatically saves the preferences to the file when the game is closed, so you don't need to worry about saving them yourself.
+
+You can also use `MelonPreferences.Save` to save the preferences manually, if you want to save them at a specific point in time.
+
+If you want to create a custom preferences file, use:
+```csharp
+category.SetFilePath("Foo/Bar.cfg");
+category.SaveToFile();
+```
+- **MelonEnvironment**:
+Provides a way to access various paths related to the framework, such as the game directory, user data directory, and mod directory.
+
+`MelonEnvironment.UserDataDirectory` is particularly useful for storing user data, such as preferences or mod-specific save data you don't want in game's save system.
+
