@@ -1,0 +1,54 @@
+# Note: Template blocks require a 'weight' parameter so they're correctly ordered on the landing page
+
+# Hero
+hero:
+  enable: true
+  weight: 10
+  template: hero
+
+  backgroundImage:
+    path: "images/templates/hero"
+    filename:
+      desktop: "gradient-desktop.webp"
+      mobile: "gradient-mobile.webp"
+
+  badge:
+    text: v0.1.0-wip
+    color: primary # primary, secondary, success, danger, warning, info, light, dark
+    pill: false # boolean
+    soft: true # boolean
+
+  title: "Schedule I Modding Wiki"
+  subtitle: Documentation for modding [Schedule I](https://www.scheduleonegame.com/), a Unity game by TVGS.
+
+  titleLogo:
+    path: "images/logos"
+    filename: "title_logo.png"
+    alt: "Lotus Docs Logo"
+    height: 80px
+
+  # image:
+  #   path: "images" # path to image under configured assets directory. default 'images'
+  #   filename: "lotus_docs_screenshot.png" # filename of your hero image (including file extension)
+  #   alt: "Lotus Docs Screenshot" # Optional but recommended
+  #   boxShadow: true # default 'false' (excludes .svg images)
+  #   rounded: true # round the image corners? default 'false' (excludes .svg images)
+
+  ctaButton:
+    icon: rocket_launch
+    btnText: "Get Started"
+    url: "/docs/"
+  cta2Button:
+    icon: groups
+    btnText: "Join Discord"
+    url: "https://discord.gg/9Z5RKEYSzq"
+
+  info: "Not affiliated with TVGS or Schedule I. This is a community-driven project to help modders create mods for Schedule I."
+
+# Feature Grid
+featureGrid:
+  enable: false
+
+# Image compare
+imageCompare:
+  enable: false
