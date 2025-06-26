@@ -1,5 +1,5 @@
 ---
-weight: 100
+weight: 11100
 title: "Installing MelonLoader"
 description: "A guide on installing the mod loader"
 icon: "download"

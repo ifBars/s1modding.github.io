@@ -1,5 +1,5 @@
 ---
-weight: 150
+weight: 11150
 title: "Common Terms"
 description: "Learn about common terms used in Schedule I modding"
 icon: "translate"

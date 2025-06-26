@@ -1,5 +1,5 @@
 ---
-weight: 200
+weight: 11200
 title: "Installing Mods and Plugins"
 description: "How to install mods and plugins for MelonLoader"
 icon: "extension"

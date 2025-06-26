@@ -1,5 +1,5 @@
 ---
-weight: 300
+weight: 11300
 title: "Troubleshooting"
 description: "Common issues and their solutions"
 icon: "bug_report"
