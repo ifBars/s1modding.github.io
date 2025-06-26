@@ -1,21 +1,34 @@
 baseURL = 'https://example.org/'
 languageCode = 'en-us'
 title = 'Schedule I Modding Wiki'
+enableGitInfo = true
 
 [module]
-    [[module.imports]]
-        path = "github.com/colinwilson/lotusdocs"
-        disable = false
-    [[module.imports]]
-        path = "github.com/gohugoio/hugo-mod-bootstrap-scss/v5"
-        disable = false
+  [[module.imports]]
+    path = "github.com/colinwilson/lotusdocs"
+    disable = false
+  [[module.imports]]
+    path = "github.com/gohugoio/hugo-mod-bootstrap-scss/v5"
+    disable = false
 
-[params.docs]
-themeColor = "green"
-darkMode = true
-sidebarIcons = true
-lastMod = true
+[params]
+  author = "k0"
+  email = "21180271+k073l@users.noreply.github.com"
+  website = "https://k073l.github.io/s1-modding-wiki/"
+  version = "v1.0.0-wip"
+  keywords = ["hugo", "doks", "documentation", "schedule I", "modding", "wiki", "schedule-I", "schedule-one"]
 
+  [params.docs]
+    themeColor = "green"
+    darkMode = true
+    sidebarIcons = true
+    repoURL = "https://github.com/k073l/s1-modding-wiki/"
+    repoBranch = "main"
+    editPage = true
+    lastMod = true
+
+  [params.social]
+    github = "k073l/s1-modding-wiki"
 
 [caches]
   [caches.images]
