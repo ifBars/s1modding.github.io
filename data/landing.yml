@@ -9,14 +9,14 @@ hero:
   backgroundImage:
     path: "images/templates/hero"
     filename:
-      desktop: "gradient-desktop.webp"
-      mobile: "gradient-mobile.webp"
+      desktop: "gradient-desktop.png"
+      mobile: "gradient-mobile.png"
 
   badge:
     text: v0.1.0-wip
-    color: primary # primary, secondary, success, danger, warning, info, light, dark
-    pill: false # boolean
-    soft: true # boolean
+    color: primary
+    pill: false
+    soft: true
 
   title: "Schedule I Modding Wiki"
   subtitle: Documentation for modding [Schedule I](https://www.scheduleonegame.com/), a Unity game by TVGS.
@@ -27,12 +27,12 @@ hero:
     alt: "Lotus Docs Logo"
     height: 80px
 
-  # image:
-  #   path: "images" # path to image under configured assets directory. default 'images'
-  #   filename: "lotus_docs_screenshot.png" # filename of your hero image (including file extension)
-  #   alt: "Lotus Docs Screenshot" # Optional but recommended
-  #   boxShadow: true # default 'false' (excludes .svg images)
-  #   rounded: true # round the image corners? default 'false' (excludes .svg images)
+  image:
+    path: "images"
+    filename: "docs_screenshot.png"
+    alt: "Screenshot of the Schedule I modding wiki"
+    boxShadow: true
+    rounded: true
 
   ctaButton:
     icon: rocket_launch
