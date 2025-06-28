@@ -33,15 +33,41 @@ Following software is required to run MelonLoader:
 Download [MelonLoader 0.7.0](https://github.com/LavaGang/MelonLoader/releases/download/v0.7.0/MelonLoader.Installer.exe) and run it.
 
 
+The installer should automatically detect your Schedule I installation. If it does not, you can manually select the game folder.
 Select the game folder of Schedule I, which is usually located at `C:\Program Files (x86)\Steam\steamapps\common\Schedule I`.
 
 Click "Install" to install MelonLoader.
 
 #### Linux
-// TODO
+It is assumed that you have a working installation of Schedule I on Linux (using Proton). If you're using Wine, you can follow Windows steps or use `winetricks` in your Wine prefix to install the required dependencies.
+
+###### Installing pre-requisites
+Install [protontricks](https://github.com/Matoking/protontricks) for easy installation of the required dependencies.
+
+This allows you to install .NET Desktop 6.0 automatically, via `protontricks 3164500 dotnetdesktop6`. You also might need to install the Visual C++ 2015-2019 Redistributable via `protontricks 3164500 vcrun2015`.
+
+###### Installing MelonLoader
+Download [MelonLoader 0.7.0](https://github.com/LavaGang/MelonLoader/releases/download/v0.7.0/MelonLoader.Installer.Linux) and run it.
+Make sure to give it execute permissions with 
+```bash
+chmod +x MelonLoader.Installer.Linux
+```
+
+Follow the instructions on screen to install MelonLoader.
+
+To make sure MelonLoader starts with the game, add `WINEDLLOVERRIDES="version=n,b" %command%` to the launch options of Schedule I in Steam. If you are using Wine, you can handle the override in `winecfg` for your Wine prefix.
 
 #### MacOS
-// TODO
+There are [reports](https://www.applegamingwiki.com/wiki/Schedule_I) of Schedule I running on MacOS using Wine, however I found the most success with running it with CrossOver.
+Here, it will also be assumed that you have a working installation of Schedule I on MacOS (using Wine or CrossOver).
+
+###### Installing pre-requisites
+Install them in the same way as on Windows with CrossOver, or use `winetricks` in your Wine prefix to install the required dependencies.
+
+###### Installing MelonLoader
+Follow the same steps as on Windows.
+
+You also need to make sure that the overrides are set in Steam launch options. Alternatively, you can set the overrides in your Wine prefix with `winecfg`, or click "Wine Configuration" in CrossOver and set the overrides in libraries.
 
 ## Running Schedule I with MelonLoader
 Run the game through Steam as usual. First startup after installing MelonLoader or after updating the game may take a bit longer.
