@@ -85,3 +85,27 @@ Provides a way to access various paths related to the framework, such as the gam
 
 `MelonEnvironment.UserDataDirectory` is particularly useful for storing user data, such as preferences or mod-specific save data you don't want in game's save system.
 
+- **MelonCoroutines**:
+MelonLoader provides a way to create coroutines, which are methods that don't block the main thread and can be used to execute code over multiple frames. This is useful for tasks that take a long time to complete, such as loading assets or performing complex calculations.
+
+You can create a coroutine using the `MelonCoroutines.Start` method, which takes a method that returns an `IEnumerator`. Here's an example:
+```csharp
+public override void OnSceneWasLoaded(int buildIndex, string sceneName)
+{
+    MelonCoroutines.Start(MyCoroutine());
+}
+private IEnumerator MyCoroutine()
+{
+    LoggerInstance.Msg("Starting coroutine...");
+    yield return new WaitForSeconds(1f); // Wait for 1 second
+    LoggerInstance.Msg("Coroutine finished!");
+}
+```
+You can also use `MelonCoroutines.Stop` to stop a coroutine, if you need to.
+```csharp
+MelonCoroutines.Stop(MyCoroutine());
+// or pass in the object returned by `MelonCoroutines.Start` to stop a specific coroutine
+object coroutine = MelonCoroutines.Start(MyCoroutine());
+MelonCoroutines.Stop(coroutine);
+```
+
