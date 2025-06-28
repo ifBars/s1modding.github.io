@@ -15,4 +15,4 @@ hugo server -D
 This will start a local server, and you can view the wiki at `http://localhost:1313`.
 
 ## Contributing
-Contributions are welcome! If you find any issues or have suggestions for improvements, feel free to open an issue or submit a pull request.
+Contributions are welcome! If you find any issues or have suggestions for improvements, feel free to open an issue or submit a pull request. For more information on how to contribute, please refer to the [CONTRIBUTING.md](CONTRIBUTING.md) file.
