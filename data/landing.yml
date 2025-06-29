@@ -23,8 +23,8 @@ hero:
 
   titleLogo:
     path: "images/logos"
-    filename: "title_logo.png"
-    alt: "Lotus Docs Logo"
+    filename: "logo.png"
+    alt: "S1 Modding Wiki Logo"
     height: 80px
 
   image:
