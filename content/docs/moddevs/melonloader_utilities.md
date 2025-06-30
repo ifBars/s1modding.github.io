@@ -9,8 +9,9 @@ draft: false
 toc: true
 ---
 
-This is not an exhaustive list of all the tools provided by MelonLoader, but it should cover the most commonly used ones.
-For more information, refer to the [MelonLoader documentation](https://melonwiki.xyz/#/modders/quickstart).
+{{< alert context="info" >}}
+This is not an exhaustive list of all the tools provided by MelonLoader, but it should cover the most commonly used ones. For more information, refer to the <a href="https://melonwiki.xyz/#/modders/quickstart">MelonLoader documentation</a>.
+{{< /alert >}}
 
 - **MelonLogger**:
 You can use `LoggerInstance` in non-static context of your mod class to log messages to the console. This is useful for debugging and providing feedback to the player.
@@ -19,13 +20,14 @@ If you want to log messages in static context, MelonLoader provides a singleton 
 Melon<MyMod>.LoggerInstance.Msg("This is a message from static context");
 ```
 You also can use `.Error` or `.Warning` to log error or warning messages, respectively.
+
 - Callbacks:
 MelonLoader provides various callbacks that you can override in your mod class to execute code at specific points in the game lifecycle. For example, you can override `OnUpdate` to execute code every frame, or `OnSceneWasLoaded` to execute code when a new scene is loaded.
 ```csharp
 public override void OnUpdate()
 {
     // This code will be executed every frame
-    Melon<MyMod>.LoggerInstance.Msg("Updating..."); // Don't do this - it will spam the console and lag a lot!
+    LoggerInstance.Msg("Updating..."); // Don't do this - it will spam the console and lag a lot!
 }
 public override void OnSceneWasLoaded(int buildIndex, string sceneName)
 {
@@ -37,14 +39,20 @@ public override void OnSceneWasLoaded(int buildIndex, string sceneName)
     }
 }
 ```
+
+{{< alert context="warning" >}}
+<b>Performance tip:</b> Don't log messages every frame in <code>OnUpdate</code> - it will spam the console and cause significant performance issues!
+{{< /alert >}}
+
 You can also subscribe to events, using `MelonEvents`:
 ```csharp
 MelonEvents.OnUpdate.Subscribe(() =>
 {
     // This code will be executed every frame
-    LoggerInstance.Msg("Updating...");
+    Melon<MyMod>.LoggerInstance.Msg("Updating...");
 }, 100); // The higher the number, the lower the priority.
 ```
+
 - **MelonPreferences**:
 MelonLoader provides a way to create preferences for your mod, which can be accessed and modified by the player in `UserData/MelonPreferences.cfg` or a custom file.
 
@@ -71,7 +79,10 @@ public override void OnSceneWasLoaded(int buildIndex, string sceneName)
     }
 }
 ```
+
+{{< alert context="success" >}}
 MelonLoader automatically saves the preferences to the file when the game is closed, so you don't need to worry about saving them yourself.
+{{< /alert >}}
 
 You can also use `MelonPreferences.Save` to save the preferences manually, if you want to save them at a specific point in time.
 
@@ -80,10 +91,13 @@ If you want to create a custom preferences file, use:
 category.SetFilePath("Foo/Bar.cfg");
 category.SaveToFile();
 ```
+
 - **MelonEnvironment**:
 Provides a way to access various paths related to the framework, such as the game directory, user data directory, and mod directory.
 
-`MelonEnvironment.UserDataDirectory` is particularly useful for storing user data, such as preferences or mod-specific save data you don't want in game's save system.
+{{< alert context="primary" >}}
+<code>MelonEnvironment.UserDataDirectory</code> is particularly useful for storing user data, such as preferences or mod-specific save data you don't want in game's save system.
+{{< /alert >}}
 
 - **MelonCoroutines**:
 MelonLoader provides a way to create coroutines, which are methods that don't block the main thread and can be used to execute code over multiple frames. This is useful for tasks that take a long time to complete, such as loading assets or performing complex calculations.
@@ -108,4 +122,3 @@ MelonCoroutines.Stop(MyCoroutine());
 object coroutine = MelonCoroutines.Start(MyCoroutine());
 MelonCoroutines.Stop(coroutine);
 ```
-

@@ -11,7 +11,9 @@ toc: true
 
 Here are some resources, including ones developed by the community, that can help you with modding Schedule I.
 
-**Be sure to also check out #dev-resources in [Discord](https://discord.gg/9Z5RKEYSzq)**
+{{< alert context="info" >}}
+Be sure to also check out <b>#dev-resources</b> in <a href="https://discord.gg/9Z5RKEYSzq">Discord</a>
+{{< /alert >}}
 
 ## Documentation
 - [MelonLoader Documentation](https://melonwiki.xyz/) - The official documentation for MelonLoader, the mod loader often used for Schedule I.

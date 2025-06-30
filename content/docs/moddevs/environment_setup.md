@@ -12,12 +12,19 @@ toc: true
 To start off, you need to set up your modding environment. This guide will help you install the necessary tools and get started with modding Schedule I.
 
 ## Prerequisites
+
+{{< alert context="info" >}}
+Before starting, ensure you have a copy of Schedule I installed via Steam and basic familiarity with programming concepts and C#.
+{{< /alert >}}
+
 - A copy of Schedule I installed via Steam.
 - Familiarity with basic programming concepts and C#.
 - A code editor or IDE (e.g., Visual Studio, Visual Studio Code, Rider).
 - Basic understanding of Unity and MelonLoader.
 
-Install MelonLoader and be sure to read through [Mod Users](/docs/modusers/) section to familiarize yourself with the modding ecosystem.
+{{< alert context="warning" >}}
+Install MelonLoader and be sure to read through <a href="/docs/modusers/">Mod Users</a> section to familiarize yourself with the modding ecosystem.
+{{< /alert >}}
 
 Install .NET SDK 6.0 or later. You can use newer versions, like [10.0](https://dotnet.microsoft.com/en-us/download/dotnet/10.0), allowing you to use the latest C# features.
 
@@ -28,8 +35,13 @@ Install .NET SDK 6.0 or later. You can use newer versions, like [10.0](https://d
 - If you prefer a lightweight option, you can use [Visual Studio Code](https://code.visualstudio.com/) with extensions.
 
 ### Seting up your project
+
 #### Templates
-There's an assortment of templates available for quickly starting your modding project.
+
+{{< alert context="success" >}}
+There's an assortment of templates available for quickly starting your modding project. Using a template is the recommended approach for beginners.
+{{< /alert >}}
+
 - [MelonLoader Mod Template](https://github.com/TrevTV/MelonLoader.VSWizard/releases) - Official MelonLoader template for Visual Studio.
 - [Mono Mod Template for MelonLoader and BepInEx](https://github.com/MaxtorCoder/ScheduleOnePluginTemplate) - Customizable template for creating mods with Mono and MelonLoader or BepInEx. Includes optional support for Unity scripts projects to create asset bundles. By [MaxtorCoder](https://github.com/MaxtorCoder).
 - [Basic modding template for Mono](https://github.com/XOWithSauce/schedule-mono-example) - A simple template for creating mods with Mono. By [XOWithSauce](https://github.com/XOWithSauce).
@@ -38,25 +50,39 @@ There's an assortment of templates available for quickly starting your modding p
 - [Yet Another MelonMod Template with batteries included](https://github.com/k073l/S1MelonModTemplate) - Template featuring cross-backend (IL2CPP and Mono) compatibility, easy build and test process, automatic loading of testing mods, and more. By [k073l](https://github.com/k073l).
 
 #### Manual Setup
+
+{{< alert context="warning" >}}
+Manual setup is more complex and error-prone. Consider using a template first if you're new to modding.
+{{< /alert >}}
+
 If you prefer to set up your project manually, follow these steps:
+
 1. Create a new C# Class Library project in your IDE. Be sure to target:
     - For Mono: .NETStandard 2.1
     - For IL2CPP: .NET 6.0
+
 2. Include references to files you'll need:
     - `MelonLoader.dll` (from `MelonLoader/net35` or `MelonLoader/net6` folder in your game directory, depending on your target backend)
     - `UnityEngine.dll` (from `<game dir>/Schedule I_Data/Managed` or `MelonLoader\Il2CppAssemblies\` for IL2CPP)
     - `Assembly-CSharp.dll` (from `<game dir>/Schedule I_Data/Managed` or `MelonLoader\Il2CppAssemblies\` for IL2CPP)
     - other references as needed
-3. If you are using Mono, you can also add a NuGet package - [BepInEx Publicizer](https://www.nuget.org/packages/BepInEx.AssemblyPublicizer.MSBuild). Then, when you include `Assembly-CSharp.dll` in your project, add
+
+3. If you are using Mono, you can also add a NuGet package - [BepInEx Publicizer](https://www.nuget.org/packages/BepInEx.AssemblyPublicizer.MSBuild). Then, when you include `Assembly-CSharp.dll` in your project, add this reference to publicize the types in that assembly:
+
 ```xml
 <Reference Include="Assembly-CSharp" Publicize="true">
     <Private>false</Private>
     <HintPath><game dir>\Schedule I_Data\Managed\Assembly-CSharp.dll</HintPath>
 </Reference>
 ```
-to publicize the types in `Assembly-CSharp.dll`. This will allow you to access private and protected members, without the need to use reflection.
 
-You're now free to start coding your mod by creating a class that inherits from `MelonMod`.
+{{< alert context="info" >}}
+The BepInEx Publicizer allows you to access private and protected members without using reflection, making development easier.
+{{< /alert >}}
+
+{{< alert context="success" >}}
+You're now ready to start coding your mod by creating a class that inherits from <code>MelonMod</code>.
+{{< /alert >}}
 
 Further information can be found in [Creating Your First Mod](/docs/moddevs/creating_your_first_mod/) guide.
 

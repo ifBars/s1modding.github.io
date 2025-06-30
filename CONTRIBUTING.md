@@ -80,6 +80,50 @@ Reference images in content using:
 {{< figure src="image.png" alt="alt text" >}}
 ```
 
+### Alerts and Callouts
+
+Use the `alert` shortcode to add styled notification boxes in your content.
+
+#### Basic usage:
+
+```markdown
+{{< alert context="info" >}}
+This is an informational message.
+{{< /alert >}}
+```
+
+#### Context options:
+
+* `info`
+* `warning`
+* `success`
+* `danger`
+* `default`
+* `primary`
+
+Each context changes the color and icon.
+
+#### Example variations:
+
+```markdown
+{{< alert context="warning" >}}
+Be careful when editing these files.
+{{< /alert >}}
+
+{{< alert context="success" >}}
+All tasks completed!
+{{< /alert >}}
+
+{{< alert context="danger" text="Critical error occurred!" >}}
+```
+
+If you use `text=`, it overrides the body. Otherwise, the content between `{{< /alert >}}` is used.
+
+> If neither `text` nor body content is provided, it will error.
+> When using `alert`s, ensure you do not have Markdown formatting inside the alert body, as it will not render correctly. Use HTML tags if you need formatting inside an alert.
+
+---
+
 ### Checking Your Changes
 
 To preview your edits locally, run:
@@ -94,4 +138,3 @@ Note:
 
 - Changes to `data/landing.yml` may require restarting the server.
 - Markdown files in `content/docs/` are hot-reloaded on save.
-

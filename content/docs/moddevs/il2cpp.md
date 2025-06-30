@@ -11,8 +11,9 @@ toc: true
 
 Il2Cpp and Mono modding share many similarities, but there are some differences that you should be aware of when modding main branch Schedule I.
 
-Many examples (and possibly, a better explaination) can be found on the [Il2Cpp Differences MelonWiki page](https://melonwiki.xyz/#/modders/il2cppdifferences).
-
+{{< alert context="info" >}}
+Many examples (and possibly, a better explanation) can be found on the <a href="https://melonwiki.xyz/#/modders/il2cppdifferences">Il2Cpp Differences MelonWiki page</a>.
+{{< /alert >}}
 
 ### Assemblies
 In Mono, you can directly reference
@@ -27,7 +28,12 @@ using Il2CppScheduleOne.PlayerScripts;
 ```
 
 ### Types
-Similarly, some methods might use `Il2Cpp` types instead of regular C# types. For example, `Il2CppSystem.Collections.Generic.List<T>` instead of `System.Collections.Generic.List<T>`. Main pain-point is that you can't use LINQ on `Il2Cpp` types directly, but that can be worked around by adding `._items`.
+Similarly, some methods might use `Il2Cpp` types instead of regular C# types. For example, `Il2CppSystem.Collections.Generic.List<T>` instead of `System.Collections.Generic.List<T>`.
+
+{{< alert context="warning" >}}
+Main pain-point is that you can't use LINQ on <b>Il2Cpp</b> types directly, but that can be worked around by adding <code>._items</code>.
+{{< /alert >}}
+
 ```csharp
 Il2CppSystem.Collections.Generic.List<int> list;
 list.FirstOrDefault(); // This won't work
@@ -37,7 +43,6 @@ list._items.FirstOrDefault(); // This will work
 If you want to grab the IL2CPP type of a class, you can use `Il2CppType.Of<T>()` method. For example:
 ```csharp
 using Il2CppInterop.Runtime;
-
 Resources.FindObjectsOfTypeAll(Il2CppType.Of<Camera>());
 ```
 
@@ -45,7 +50,7 @@ Resources.FindObjectsOfTypeAll(Il2CppType.Of<Camera>());
 You'll often need to cast types. While in Mono the compiler can infer the type, eg. when creating a callback action, in Il2Cpp you need to specify the type explicitly:
 ```csharp
 addButton.onClick.AddListener((UnityAction)(() => {
-    // Do something
+ // Do something
 }));
 ```
 For types with no explicit cast, use `.Cast<T>()` or `.TryCast<T>()` method
@@ -55,6 +60,7 @@ Type result = il2CppObj.Cast<Type>();
 
 ### Custom Components
 If you want to create a custom component or inherit a Il2Cpp class, you need to use the `RegisterTypeInIl2Cpp` attribute. This is necessary for Il2Cpp to recognize your class and allow it to be used in the game.
+
 ```csharp
 using Il2CppInterop.Runtime;
 using Il2CppScheduleOne;
@@ -74,20 +80,28 @@ public class MyCommand : ConsoleCommand
         ClassInjector.DerivedConstructorBody(this);
     }
 
-    // Other members required by ConsoleCommand, omitting for brevity
+// Other members required by ConsoleCommand, omitting for brevity
 }
 ```
-Alternatively, you can manually register the type using `ClassInjector.RegisterTypeInIl2Cpp<T>()` method.
+
+{{< alert context="primary" >}}
+Alternatively, you can manually register the type using <code>ClassInjector.RegisterTypeInIl2Cpp&lt;T&gt;()</code> method.
+{{< /alert >}}
 
 ### Coroutines
-Use `MelonCoroutines`. Don't put `IEnumerator`s in types registered with `RegisterTypeInIl2Cpp`, as they will not work properly.
+Use `MelonCoroutines`. 
+
+{{< alert context="danger" >}}
+Don't put <b>IEnumerator</b>s in types registered with <code>RegisterTypeInIl2Cpp</code>, as they will not work properly.
+{{< /alert >}}
+
 ```csharp
 using UnityEngine;
 using MelonLoader;
 public IEnumerator MyCoroutine()
 {
-    yield return new WaitForSeconds(1f);
-    // Do something
+yield return new WaitForSeconds(1f);
+ // Do something
 }
 MelonCoroutines.Start(MyCoroutine());
 ```

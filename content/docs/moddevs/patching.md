@@ -17,7 +17,12 @@ Patching allows you to inject your own code into the game's execution flow. This
 ## How to Patch
 ### Automatic Patching
 We let MelonLoader handle the patching process automatically. When you build your mod, MelonLoader will automatically apply your patches to the game code when the game starts.
-To patch a method, you need to use `Harmony`, a library which ships with MelonLoader. Here's a basic example of how to patch a method:
+
+{{< alert context="info" >}}
+To patch a method, you need to use <b>Harmony</b>, a library which ships with MelonLoader.
+{{< /alert >}}
+
+Here's a basic example of how to patch a method:
 ```csharp
 using HarmonyLib;
 using MelonLoader;
@@ -37,7 +42,11 @@ public class MyPatch
 }
 ```
 
-In this example, `TargetClass` is the class containing the method you want to patch, and `TargetMethod` is the method you want to modify. The `Prefix` method runs before the original method, and the `Postfix` method runs after it. `Prefix` and `Postfix` methods must be static.
+In this example, `TargetClass` is the class containing the method you want to patch, and `TargetMethod` is the method you want to modify. The `Prefix` method runs before the original method, and the `Postfix` method runs after it. 
+
+{{< alert context="warning" >}}
+<b>Prefix</b> and <b>Postfix</b> methods must be static.
+{{< /alert >}}
 
 You can also use Harmony to act on the instance, change the return value, or stop the original method from executing.
 ```csharp
@@ -91,7 +100,9 @@ public class MyPatch
 ```
 Additionally, you can use `HarmonyTranspiler` to modify the IL code of the method directly, allowing for more complex modifications.
 
-The important thing to remember about Transpilers, is that they modify the IL code, and thus, will not work on IL2CPP builds, as they are compiled to C++ and then to machine code. Transpilers are only available for Mono builds.
+{{< alert context="danger" >}}
+<b>Important:</b> Transpilers modify the IL code, and thus, will not work on IL2CPP builds, as they are compiled to C++ and then to machine code. Transpilers are only available for Mono builds.
+{{< /alert >}}
 
 ### Patching manually
 If you want to patch manually, you can use `HarmonyInstance`.
@@ -117,7 +128,6 @@ MethodInfo privateMethod = typeof(TargetClass).GetMethod("TargetMethod", new Typ
 // We pass in the method we want to patch, the prefix method, the postfix method, and the finalizer method
 harmony.Patch(privateMethod, new HarmonyMethod(typeof(MyPatch), "PatchMethodName"), null, null);
 ```
-
 
 ## Resources
 - [Harmony Documentation](https://harmony.pardeike.net/articles/patching.html)
