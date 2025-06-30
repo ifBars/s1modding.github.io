@@ -5,7 +5,7 @@ Thank you for your interest in contributing to the S1 Modding Wiki! This documen
 ## How to Contribute
 
 1. **Fork the Repository**: Fork the repository to your own GitHub account. This lets you make changes without affecting the main repository.
-2. **Clone the Repository**: Clone your forked repository to your local machine using `git clone <your-fork-url>`.
+2. **Clone the Repository**: Clone your forked repository to your local machine using `git clone --recurse-submodules <your-fork-url>`.
 3. **Create a Branch**: Create a new branch for your changes with `git checkout -b <branch-name>`. Use a descriptive name that reflects your changes (e.g., `add-new-mod-guide`).
 4. **Make Changes**: Modify the wiki content. This includes adding new pages, updating existing content, fixing typos, or improving formatting.
 5. **Commit and Push**: Commit your changes with a clear, concise message using `git commit -m "Your commit message"`, then push to your fork with `git push origin <branch-name>`.

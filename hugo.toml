@@ -23,13 +23,13 @@ enableGitInfo = true
     themeColor = "green"
     darkMode = true
     sidebarIcons = true
-    repoURL = "https://github.com/k073l/s1-modding-wiki/"
+    repoURL = "https://github.com/s1modding/s1modding.github.io"
     repoBranch = "main"
     editPage = true
     lastMod = true
 
   [params.social]
-    github = "k073l/s1-modding-wiki"
+    github = "s1modding/s1modding.github.io"
     discord = "9Z5RKEYSzq"
 
 [caches]

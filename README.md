@@ -7,7 +7,7 @@ This project is dedicated to providing resources and documentation for modding S
 To run the wiki locally, you need to have [Hugo](https://gohugo.io/) installed. Once you have Hugo set up, you can clone this repository and run the following commands:
 
 ```bash
-git clone
+git clone --recurse-submodules https://github.com/s1modding/s1modding.github.io.git
 cd s1-modding-wiki
 hugo server -D
 ```
