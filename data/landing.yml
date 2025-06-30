@@ -13,8 +13,8 @@ hero:
       mobile: "gradient-mobile.png"
 
   badge:
-    text: v0.1.0-wip
-    color: primary
+    text: Unofficial
+    color: warning
     pill: false
     soft: true
 
