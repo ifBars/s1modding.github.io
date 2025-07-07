@@ -126,7 +126,7 @@ using ScheduleOne;
 #endif
 public class MyMod : MelonMod
 {
-    public override void OnApplicationStart()
+    public override void OnInitializeMelon()
     {
 #if IL2CPP
         // Il2Cpp specific code
