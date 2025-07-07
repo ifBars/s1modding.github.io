@@ -100,8 +100,46 @@ using UnityEngine;
 using MelonLoader;
 public IEnumerator MyCoroutine()
 {
-yield return new WaitForSeconds(1f);
- // Do something
+    yield return new WaitForSeconds(1f);
+    // Do something
 }
 MelonCoroutines.Start(MyCoroutine());
 ```
+
+## Supporting both branches
+Some modders want to support both branches of Schedule I, Mono and Il2Cpp. This is possible, but requires some extra work.
+
+### Git Branches
+You can create two branches in your repository, one for Mono and one for Il2Cpp.
+
+{{< alert context="warning" >}}
+This might result in some duplicated code, as only some of the implementation will be exclusive to one branch or the other.
+{{< /alert >}}
+
+### Conditional Compilation
+You can use conditional compilation to include or exclude code based on the target platform. For example, you can use `#if IL2CPP` to include code only for Il2Cpp builds, or `#if MONO` for Mono builds.
+```csharp
+#if IL2CPP
+using Il2CppScheduleOne;
+#else
+using ScheduleOne;
+#endif
+public class MyMod : MelonMod
+{
+    public override void OnApplicationStart()
+    {
+#if IL2CPP
+        // Il2Cpp specific code
+        MelonLogger.Msg("Running on Il2Cpp");
+#else
+        // Mono specific code
+        MelonLogger.Msg("Running on Mono");
+#endif
+    }
+}
+```
+When compiling your mod, you can define the `IL2CPP` or `MONO` symbols in the build settings. This will allow you to include or exclude code based on the target platform. Some of the templates shown in [Getting Started](/docs/moddevs/environment_setup/) already have these symbols defined, so you can use them directly.
+
+{{< alert context="info" >}}
+This is a more convenient way to support both branches, as you only have to maintain one codebase and use conditional compilation to include or exclude code based on the target platform.
+{{< /alert >}}

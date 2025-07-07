@@ -80,6 +80,10 @@ If you prefer to set up your project manually, follow these steps:
 The BepInEx Publicizer allows you to access private and protected members without using reflection, making development easier.
 {{< /alert >}}
 
+{{< alert context="default" >}}
+It's recommended to use Git for version control, regardless of whether you use a template or set up your project manually. This will help you manage your mod's development and allows you to share your code with others on platforms like <a href="https://github.com">GitHub</a>.
+{{< /alert >}}
+
 {{< alert context="success" >}}
 You're now ready to start coding your mod by creating a class that inherits from <code>MelonMod</code>.
 {{< /alert >}}
