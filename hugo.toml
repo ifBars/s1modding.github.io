@@ -31,6 +31,9 @@ enableGitInfo = true
   [params.social]
     github = "s1modding/s1modding.github.io"
     discord = "9Z5RKEYSzq"
+  
+  [params.footer]
+    copyright = "by Schedule I Modding Wiki contributors"
 
 [caches]
   [caches.images]
