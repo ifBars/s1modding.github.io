@@ -3,8 +3,8 @@ weight: 22150
 title: "Creating Custom Templates"
 description: "Build your own reusable MelonLoader mod template for Schedule I"
 icon: "construction"
-date: "2025-01-14T12:00:00+00:00"
-lastmod: "2025-01-14T12:00:00+00:00"
+date: "2025-08-08T14:00:00+00:00"
+lastmod: "2025-08-08T14:00:00+00:00"
 draft: false
 toc: true
 ---
