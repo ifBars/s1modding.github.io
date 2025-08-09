@@ -169,7 +169,7 @@ namespace $safeprojectname$;
 
 public class MainMod : MelonMod
 {
-    public override void OnInitializeMetons()
+    public override void OnInitializeMelon()
     {
         LoggerInstance.Msg("$safeprojectname$ loaded!");
     }
